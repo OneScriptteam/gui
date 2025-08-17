@@ -1,7 +1,7 @@
 local Rayfield = loadstring(game:HttpGet('https://sirius.menu/rayfield'))()
 
 local Window = Rayfield:CreateWindow({
-   Name = "Ink Game | BY OneScript",
+   Name = "Ink Game GUI | BY H4LT",
    Icon = 0, -- Icon in Topbar. Can use Lucide Icons (string) or Roblox Image (number). 0 to use no icon (default).
    LoadingTitle = "Loading GUI",
    LoadingSubtitle = "by H4LT",
@@ -202,5 +202,4 @@ local Slider = HomeTag:CreateSlider({
    Callback = function(Value)
         game.Players.LocalPlayer.Character.Humanoid.JumpPower = (Value)
    end,
-
 })
