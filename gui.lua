@@ -1,0 +1,205 @@
+local Rayfield = loadstring(game:HttpGet('https://sirius.menu/rayfield'))()
+
+local Window = Rayfield:CreateWindow({
+   Name = "Ink Game GUI | BY H4LT",
+   Icon = 0, -- Icon in Topbar. Can use Lucide Icons (string) or Roblox Image (number). 0 to use no icon (default).
+   LoadingTitle = "Loading GUI",
+   LoadingSubtitle = "by H4LT",
+   ShowText = "Loading", -- for mobile users to unhide rayfield, change if you'd like
+   Theme = "Pastel", -- Check https://[Log in to view URL]
+
+   ToggleUIKeybind = "K", -- The keybind to toggle the UI visibility (string like "K" or Enum.KeyCode)
+
+   DisableRayfieldPrompts = false,
+   DisableBuildWarnings = false, -- Prevents Rayfield from warning when the script has a version mismatch with the interface
+
+   ConfigurationSaving = {
+      Enabled = false,
+      FolderName = nil, -- Create a custom folder for your hub/game
+      FileName = "InkGAMEGUI"
+   },
+
+   Discord = {
+      Enabled = true, -- Prompt the user to join your Discord server if their executor supports it
+      Invite = "wvWkUZCGkK", -- The Discord invite code, do not include discord.gg/. E.g. discord.gg/ ABCD would be ABCD
+      RememberJoins = true -- Set this to false to make them join the discord every time they load it up
+   },
+
+   KeySystem = false, -- Set this to true to use our key system
+   KeySettings = {
+      Title = "Key System",
+      Subtitle = "Li",
+      Note = "No method of obtaining the key is provided", -- Use this to tell the user how to get a key
+      FileName = "Key", -- It is recommended to use something unique as other scripts using Rayfield may overwrite your key file
+      SaveKey = true, -- The user's key will be saved, but if you change the key, they will be unable to use your script
+      GrabKeyFromSite = false, -- If this is true, set Key below to the RAW site you would like Rayfield to get the key from
+      Key = {"Hello"} -- List of keys that will be accepted by the system, can be RAW file links (pastebin, github etc) or simple strings ("hello","key22")
+   }
+})
+
+local HomeTag = Window:CreateTab("Player", nil) -- Title, Image
+local HomeSection = HomeTag:CreateSection("Player")
+
+local GameTab = Window:CreateTab("Game", nil) -- Title, Image
+local GameSection = GameTab:CreateSection("Dead")
+
+local OpTab = Window:CreateTab("Op", nil) -- Title, Image
+local OpSection = OpTab:CreateSection("Anticheat Bypasser")
+
+local TpTab = Window:CreateTab("Teleports", nil) -- Title, Image
+local TpSection = TpTab:CreateSection("Teleports")
+
+Rayfield:Notify({
+   Title = "Script Loaded",
+   Content = "Press K to disable the gui",
+   Duration = 6.5,
+   Image = 4483362458,
+})
+
+local Button = HomeTag:CreateButton({
+   Name = "Infinite Jump Toggle",
+   Callback = function()
+       --Toggles the infinite jump between on or off on every script run
+_G.infinjump = not _G.infinjump
+
+if _G.infinJumpStarted == nil then
+	--Ensures this only runs once to save resources
+	_G.infinJumpStarted = true
+
+	--The actual infinite jump
+	local plr = game:GetService('Players').LocalPlayer
+	local m = plr:GetMouse()
+	m.KeyDown:connect(function(k)
+		if _G.infinjump then
+			if k:byte() == 32 then
+			humanoid = game:GetService'Players'.LocalPlayer.Character:FindFirstChildOfClass('Humanoid')
+			humanoid:ChangeState('Jumping')
+			wait()
+			humanoid:ChangeState('Seated')
+			end
+		end
+	end)
+end
+   end,
+})
+
+local Button = GameTab:CreateButton({
+   Name = "Go Back To Lobby (Works as server hopper)",
+   Callback = function()
+   game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("ReturnToLobby"):FireServer()
+
+   end,
+})
+
+local Button = OpTab:CreateButton({
+   Name = "Bypass AntiCheat (Maybe)",
+   Callback = function()
+   loadstring(game:HttpGet('https://raw.githubusercontent.com/h4ltbackend/AntiCheatBypasser/refs/heads/main/main'))()
+   end,
+})
+
+local Divider = OpTab:CreateDivider()
+local OpSection = OpTab:CreateSection("Finish Games")
+
+local Button = OpTab:CreateButton({
+   Name = "Finish RedLight GreenLight",
+   Callback = function()
+local pl = game.Players.LocalPlayer.Character.HumanoidRootPart
+local location = CFrame.new(51.1068344, 1023.11377, 82.4971085, -0.999950826, 1.59957914e-08, -0.0099174846, 1.58701976e-08, 1, 1.27425643e-08, 0.0099174846, 1.25845458e-08, -0.999950826)
+local humanoid = game.Players.LocalPlayer.Character.Humanoid
+humanoid:ChangeState(Enum.HumanoidStateType.Jumping)
+wait(0.1)
+pl.CFrame = location
+   end,
+})
+
+local Button = OpTab:CreateButton({
+   Name = "Teleport To Dalgona Waiting Room",
+   Callback = function()
+local pl = game.Players.LocalPlayer.Character.HumanoidRootPart
+local location = CFrame.new(746.510132, 130.33017, -139.416397, 0.998980701, -1.51720077e-11, 0.0451398976, 1.49107567e-11, 1, 6.12428294e-12, -0.0451398976, -5.44497e-12, 0.998980701)
+local humanoid = game.Players.LocalPlayer.Character.Humanoid
+humanoid:ChangeState(Enum.HumanoidStateType.Jumping)
+wait(0.1)
+pl.CFrame = location
+   end,
+})
+
+local Button = OpTab:CreateButton({
+   Name = "Finish Jump Rope",
+   Callback = function()
+local pl = game.Players.LocalPlayer.Character.HumanoidRootPart
+local location = CFrame.new(745.088928, 197.144073, 921.333557, -0.0230822545, 1.99164618e-09, 0.999733567, 1.36036515e-08, 1, -1.67809022e-09, -0.999733567, 1.35612934e-08, -0.0230822545)
+local humanoid = game.Players.LocalPlayer.Character.Humanoid
+humanoid:ChangeState(Enum.HumanoidStateType.Jumping)
+wait(0.1)
+pl.CFrame = location
+
+   end,
+})
+
+local Button = OpTab:CreateButton({
+   Name = "Finish Glass Bridge",
+   Callback = function()
+local pl = game.Players.LocalPlayer.Character.HumanoidRootPart
+local location = CFrame.new(-200.473541, 520.731323, -1533.56543, 0.985059738, 4.89344476e-09, -0.172212929, -6.28171204e-09, 1, -7.51637508e-09, 0.172212929, 8.48587067e-09, 0.985059738)
+local humanoid = game.Players.LocalPlayer.Character.Humanoid
+humanoid:ChangeState(Enum.HumanoidStateType.Jumping)
+wait(0.1)
+pl.CFrame = location
+
+   end,
+})
+
+local Divider = OpTab:CreateDivider()
+local OpSection = OpTab:CreateSection("Night War")
+
+local Button = OpTab:CreateButton({
+   Name = "Anti Night Kill",
+   Callback = function()
+local pl = game.Players.LocalPlayer.Character.HumanoidRootPart
+local location = CFrame.new(307.002014, 55.0713959, -244.242661, -0.00152742863, 6.45671889e-08, 0.999998808, -7.72652697e-08, 1, -6.46852811e-08, -0.999998808, -7.73639783e-08, -0.00152742863)
+local humanoid = game.Players.LocalPlayer.Character.Humanoid
+humanoid:ChangeState(Enum.HumanoidStateType.Jumping)
+wait(0.1)
+pl.CFrame = location
+
+   end,
+})
+
+local Button = GameTab:CreateButton({
+   Name = "Register (Go to circle)",
+   Callback = function()
+local pl = game.Players.LocalPlayer.Character.HumanoidRootPart
+local location = CFrame.new(196.713303, 54.4803085, -21.3241825, -0.999626517, 1.11339077e-07, -0.0273273829, 1.11478293e-07, 1, -3.57096575e-09, 0.0273273829, -6.61604238e-09, -0.999626517)
+local humanoid = game.Players.LocalPlayer.Character.Humanoid
+humanoid:ChangeState(Enum.HumanoidStateType.Jumping)
+wait(0.1)
+pl.CFrame = location
+
+   end,
+})
+
+local Slider = HomeTag:CreateSlider({
+   Name = "WalkSpeed Slider",
+   Range = {1, 350},
+   Increment = 1,
+   Suffix = "Speed",
+   CurrentValue = 16,
+   Flag = "sliderws", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+   Callback = function(Value)
+        game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = (Value)
+   end,
+})
+
+local Slider = HomeTag:CreateSlider({
+   Name = "JumpPower Slider",
+   Range = {1, 350},
+   Increment = 1,
+   Suffix = "Speed",
+   CurrentValue = 16,
+   Flag = "sliderjp", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+   Callback = function(Value)
+        game.Players.LocalPlayer.Character.Humanoid.JumpPower = (Value)
+   end,
+})
